@@ -1,5 +1,9 @@
-h1, margin, form {
-  margin: 35px !important;
+h1, form {
+  margin: 2% !important;
+}
+
+button {
+  margin-top: 5px !important;
 }
 
 .footer {
