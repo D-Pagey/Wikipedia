@@ -1,28 +1,39 @@
-// Random article button
-function randomArticle() {
-  const url = "https://en.wikipedia.org/wiki/Special:Random";
-  window.open(url);
-}
-
-document.getElementById("random").addEventListener("click", randomArticle);
-
 // Fetch Search Results
 const apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=";
-const userInput = "ladders";
+const userInput = "butterflies";
 
 function search() {
 fetch(apiUrl + userInput)
-  .then((resp) => resp.json())
-  .then(function(articles) {
-  console.log(articles);
-})
+  .then((data) => data.json())
+  .then(data => showResults(data))
 
   .catch(function(error) {
-    console.log("Something went wrong");
+    console.log("Something went wrong" + error);
 })
 }
 
 search();
+
+// Display results
+function showResults(data) {
+  let titles = [];
+  let snippet = [];
+
+  console.log(data.query.search);
+
+  for (let i = 0; i < data.query.search.length; i++) {
+    titles.push(data.query.search[i].title);
+    snippet.push(data.query.search[i].snippet);
+  }
+
+console.log(snippet);
+
+  const newDiv = document.createElement("div");
+  const newContent = document.createTextNode(titles);
+  newDiv.appendChild(newContent);
+  const currentDiv = document.getElementById("container");
+  document.body.insertBefore(newDiv, currentDiv);
+}
 
 /* To Do:
 - Understand query string
