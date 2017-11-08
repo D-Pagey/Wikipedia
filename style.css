@@ -11,8 +11,8 @@ button {
 }
 
 .articles {
-  margin: 10px;
   border: solid 1px black;
+  margin: 10px;
 }
 
 .article-headers {
@@ -21,6 +21,7 @@ button {
 
 .article-snippets {
   color: black;
+  margin-left: 10px;
 }
 
 .article-snippets, a:hover {
@@ -30,7 +31,6 @@ button {
 .footer {
   text-align: center;
   margin-bottom: 10px;
-  position: fixed;
   left: 0px;
   bottom: 0px;
   height: 30px;

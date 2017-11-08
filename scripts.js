@@ -15,21 +15,15 @@ fetch(apiUrl + userInput)
 search();
 
 // Display results
-const article1 = document.getElementById("article1");
-const snippet1 = document.getElementById("snippet1");
-
 function showResults(data) {
-  let titles = [];
-  let snippet = [];
 
   for (let i = 0; i < data.query.search.length; i++) {
-    titles.push(data.query.search[i].title);
-    snippet.push(data.query.search[i].snippet);
+
+    document.getElementById("article" + [i + 1]).innerHTML = data.query.search[i].title;
+    document.getElementById("snippet" + [i + 1]).innerHTML = data.query.search[i].snippet;
+    document.getElementById("link" + [i + 1]).href = `https://en.wikipedia.org/?curid=${data.query.search[i].pageid}`;
+
   }
-
-article1.innerHTML = titles[0];
-snippet1.innerHTML = snippet[0];
-
 }
 
 /* To Do:
