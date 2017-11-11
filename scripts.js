@@ -1,20 +1,20 @@
-// Fetch Search Results
+// Constants
+const x = document.getElementById("userSearch");
+const y = document.getElementById("submit");
 const apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=";
-const userInput = "chicken";
 
-function search() {
-fetch(apiUrl + userInput)
-  .then((data) => data.json())
-  .then(data => showResults(data))
+// apiCall
+function apiCall() {
+  fetch(apiUrl + x.value)
+    .then((data) => data.json())
+    .then(data => showResults(data))
 
-  .catch(function(error) {
-    console.log("Something went wrong" + error);
-})
-}
+    .catch(function(error) {
+      console.log("Something went wrong " + error);
+    })
+  }
 
-search();
-
-// Display results
+// Display search results
 function showResults(data) {
 
   for (let i = 0; i < data.query.search.length; i++) {
@@ -26,16 +26,19 @@ function showResults(data) {
   }
 }
 
+// Event Listener
+y.addEventListener("click", apiCall);
+
+
 /* To Do:
 - break tags in CSS?
 - inspect element to work out where div sits
 - Understand query string
-- input users search results
-- return JSON data of users search results
 - learn how to create containers
 - iterate through return object and create containers for each
 - remove search bar, random article and button, create back button
 - https://github.com/ksc23/wikipedia-viewer/blob/master/scripts.js
+- should I have used a form or input?
 */
 
 /* Creating DOM elements:

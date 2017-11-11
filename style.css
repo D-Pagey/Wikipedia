@@ -2,12 +2,12 @@ body {
   background-color: #f0ead6 !important;
 }
 
-h1, form {
+h1 {
   margin: 2% !important;
 }
 
-button {
-  margin-top: 5px !important;
+#random {
+  margin: 5px !important;
 }
 
 .articles {
