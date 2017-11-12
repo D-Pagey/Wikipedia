@@ -1,11 +1,46 @@
 // Constants
-const x = document.getElementById("userSearch");
-const y = document.getElementById("submit");
+const userSearch = document.getElementById("userSearch");
+const searchBtn = document.getElementById("submit");
+const content = document.getElementById("content-container");
+
 const apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=";
+
+// Creating new Divs
+function addDiv(titleV, snippetV, linkV) {
+  const newDiv = document.createElement("div");
+  newDiv.className = "articles";
+
+  const newHeader = document.createElement("h3");
+  newHeader.className = "article-headers";
+  const title = document.createTextNode(titleV);
+
+  const newLink = document.createElement("a");
+  newLink.href = linkV;
+  newLink.target = "_blank";
+
+  const newSnippet = document.createElement("p");
+  newSnippet.className = "article-snippets";
+  const snippet = document.createTextNode(snippetV);
+
+  newSnippet.appendChild(snippet);
+  newHeader.appendChild(title);
+  newLink.appendChild(newSnippet);
+  newDiv.appendChild(newHeader);
+  newDiv.appendChild(newLink);
+  content.appendChild(newDiv);
+}
+
+function removeDivs() {
+  const divs = document.getElementsByClassName("articles");
+
+  while (divs.length > 0) {
+      content.removeChild(divs[0]);
+  }
+}
 
 // apiCall
 function apiCall() {
-  fetch(apiUrl + x.value)
+  fetch(apiUrl + userSearch.value)
     .then((data) => data.json())
     .then(data => showResults(data))
 
@@ -17,34 +52,21 @@ function apiCall() {
 // Display search results
 function showResults(data) {
 
+  removeDivs();
+
   for (let i = 0; i < data.query.search.length; i++) {
 
-    document.getElementById("article" + [i + 1]).innerHTML = data.query.search[i].title;
-    document.getElementById("snippet" + [i + 1]).innerHTML = data.query.search[i].snippet;
-    document.getElementById("link" + [i + 1]).href = `https://en.wikipedia.org/?curid=${data.query.search[i].pageid}`;
+    addDiv(data.query.search[i].title, data.query.search[i].snippet, `https://en.wikipedia.org/?curid=${data.query.search[i].pageid}`);
 
   }
 }
 
 // Event Listener
-y.addEventListener("click", apiCall);
-
+searchBtn.addEventListener("click", apiCall);
 
 /* To Do:
-- break tags in CSS?
-- inspect element to work out where div sits
 - Understand query string
-- learn how to create containers
-- iterate through return object and create containers for each
 - remove search bar, random article and button, create back button
-- https://github.com/ksc23/wikipedia-viewer/blob/master/scripts.js
-- should I have used a form or input?
-*/
-
-/* Creating DOM elements:
-const newDiv = document.createElement("div");
-const newContent = document.createTextNode(titles);
-newDiv.appendChild(newContent);
-const currentDiv = document.getElementById("container");
-document.body.insertBefore(newDiv, currentDiv);
+- if no user input then throw an alert
+- footer fixed if no content, not fixed if content
 */
