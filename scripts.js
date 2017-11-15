@@ -2,17 +2,29 @@
 const userSearch = document.getElementById("userSearch");
 const searchBtn = document.getElementById("submit");
 const content = document.getElementById("content-container");
+const backBtn = document.getElementById("back");
+const random = document.getElementById("random");
 
 const apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=";
+
+function createHeader(titleV) {
+    const newHeader = document.createElement("h3");
+    newHeader.className = "article-headers";
+    const title = document.createTextNode(titleV);
+    newHeader.appendChild(title);
+    return newHeader;
+}
 
 // Creating new Divs
 function addDiv(titleV, snippetV, linkV) {
   const newDiv = document.createElement("div");
   newDiv.className = "articles";
 
-  const newHeader = document.createElement("h3");
-  newHeader.className = "article-headers";
-  const title = document.createTextNode(titleV);
+  // const newHeader = document.createElement("h3");
+  // newHeader.className = "article-headers";
+  // const title = document.createTextNode(titleV);
+  // newHeader.appendChild(title);
+  const newHeader = createHeader(titleV);
 
   const newLink = document.createElement("a");
   newLink.href = linkV;
@@ -23,7 +35,6 @@ function addDiv(titleV, snippetV, linkV) {
   const snippet = document.createTextNode(snippetV);
 
   newSnippet.appendChild(snippet);
-  newHeader.appendChild(title);
   newLink.appendChild(newSnippet);
   newDiv.appendChild(newHeader);
   newDiv.appendChild(newLink);
@@ -38,35 +49,66 @@ function removeDivs() {
   }
 }
 
+function extractJson(data) {
+  return data.json();
+}
+
 // apiCall
 function apiCall() {
   fetch(apiUrl + userSearch.value)
-    .then((data) => data.json())
-    .then(data => showResults(data))
+    .then(extractJson)
+    .then(showResults)
 
     .catch(function(error) {
       console.log("Something went wrong " + error);
     })
   }
 
-// Display search results
-function showResults(data) {
+// Toggle hiding/showing buttons
+function hide() {
+  backBtn.className = "show";
+  searchBtn.className = "hide";
+  random.className = "hide";
+  userSearch.className = "hide";
+}
+
+function show() {
+  backBtn.className = "hide";
+  searchBtn.className = "show";
+  random.className = "btn btn-primary show";
+  userSearch.className = "show";
 
   removeDivs();
 
-  for (let i = 0; i < data.query.search.length; i++) {
+  userSearch.placeholder = " Search for an article...";
+  userSearch.value = "";
 
-    addDiv(data.query.search[i].title, data.query.search[i].snippet, `https://en.wikipedia.org/?curid=${data.query.search[i].pageid}`);
+}
+
+// Display search results
+function showResults(data) {
+  const { query: { search } } = data;
+  hide();
+  removeDivs();
+
+  for (let i = 0; i < search.length; i++) {
+
+    addDiv(search[i].title, search[i].snippet, `https://en.wikipedia.org/?curid=${search[i].pageid}`);
 
   }
 }
 
 // Event Listener
 searchBtn.addEventListener("click", apiCall);
+backBtn.addEventListener("click", show);
 
 /* To Do:
 - Understand query string
-- remove search bar, random article and button, create back button
+- remove search bar, random article and button, create back button - CSS display none
+- toggle CSS classes like Footer but for all buttons
 - if no user input then throw an alert
 - footer fixed if no content, not fixed if content
+- remove html from snippet
+- object destructuring
+- break down addDiv function
 */
