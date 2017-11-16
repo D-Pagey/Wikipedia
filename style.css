@@ -13,6 +13,7 @@ h1 {
 .articles {
   border: solid 1px black;
   margin: 10px;
+  background-color: white;
 }
 
 .article-headers {
@@ -28,6 +29,14 @@ h1 {
   text-decoration: none !important;
 }
 
+.hide {
+  display: none;
+}
+
+.show {
+  display: initial;
+}
+
 .footer {
   text-align: center;
   margin-bottom: 10px;
@@ -39,13 +48,11 @@ h1 {
 }
 
 .footer--not-fixed {
-  position: fixed;
-}
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: initial;
+  text-align: center;
+  margin-bottom: 10px;
+  position: initial;
+  left: 0px;
+  bottom: 0px;
+  height: 30px;
+  width: 100%;
 }

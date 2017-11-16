@@ -4,6 +4,7 @@ const searchBtn = document.getElementById("submit");
 const content = document.getElementById("content-container");
 const backBtn = document.getElementById("back");
 const random = document.getElementById("random");
+const footer = document.getElementById("foot");
 
 const apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=";
 
@@ -53,6 +54,11 @@ function extractJson(data) {
   return data.json();
 }
 
+// if no content
+function contentCheck() {
+  (userSearch.value === '' ? alert("You need to search for something!"): apiCall());
+}
+
 // apiCall
 function apiCall() {
   fetch(apiUrl + userSearch.value)
@@ -70,45 +76,48 @@ function hide() {
   searchBtn.className = "hide";
   random.className = "hide";
   userSearch.className = "hide";
+  footer.className = "footer--not-fixed"
 }
+
+// hide(searchBtn);
 
 function show() {
   backBtn.className = "hide";
   searchBtn.className = "show";
   random.className = "btn btn-primary show";
   userSearch.className = "show";
+  footer.className = "footer";
 
   removeDivs();
 
   userSearch.placeholder = " Search for an article...";
   userSearch.value = "";
 
+  footer
+
 }
 
 // Display search results
 function showResults(data) {
   const { query: { search } } = data;
+
   hide();
   removeDivs();
 
   for (let i = 0; i < search.length; i++) {
 
-    addDiv(search[i].title, search[i].snippet, `https://en.wikipedia.org/?curid=${search[i].pageid}`);
+   addDiv(search[i].title, search[i].snippet.replace(/<\/?[^>]+>/gi, ''), `https://en.wikipedia.org/?curid=${search[i].pageid}`);
 
   }
 }
 
-// Event Listener
-searchBtn.addEventListener("click", apiCall);
+// Event Listeners
+searchBtn.addEventListener("click", contentCheck);
 backBtn.addEventListener("click", show);
 
 /* To Do:
 - Understand query string
-- remove search bar, random article and button, create back button - CSS display none
-- toggle CSS classes like Footer but for all buttons
-- if no user input then throw an alert
-- footer fixed if no content, not fixed if content
-- remove html from snippet
 - object destructuring
 - break down addDiv function
+- map instead of if statement
 */
