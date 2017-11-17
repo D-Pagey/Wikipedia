@@ -7,13 +7,21 @@ h1 {
 }
 
 #random {
-  margin: 5px;
+  margin: 10px;
 }
 
 .articles {
-  border: solid 1px black;
-  margin: 10px;
   background-color: white;
+  border-radius: 15px;
+  border: 2px solid;
+  margin: 10px;
+  padding: 5px;
+}
+
+button {
+  border-radius: 2px;
+  border: 0.5px solid;
+  margin: 2px;
 }
 
 .article-headers {

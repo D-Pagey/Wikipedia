@@ -5,7 +5,6 @@ const content = document.getElementById("content-container");
 const backBtn = document.getElementById("back");
 const random = document.getElementById("random");
 const footer = document.getElementById("foot");
-
 const apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=";
 
 function createHeader(titleV) {
@@ -16,15 +15,11 @@ function createHeader(titleV) {
     return newHeader;
 }
 
-// Creating new Divs
+// Creating new Div
 function addDiv(titleV, snippetV, linkV) {
   const newDiv = document.createElement("div");
   newDiv.className = "articles";
 
-  // const newHeader = document.createElement("h3");
-  // newHeader.className = "article-headers";
-  // const title = document.createTextNode(titleV);
-  // newHeader.appendChild(title);
   const newHeader = createHeader(titleV);
 
   const newLink = document.createElement("a");
@@ -34,9 +29,9 @@ function addDiv(titleV, snippetV, linkV) {
   const newSnippet = document.createElement("p");
   newSnippet.className = "article-snippets";
   const snippet = document.createTextNode(snippetV);
-
   newSnippet.appendChild(snippet);
   newLink.appendChild(newSnippet);
+
   newDiv.appendChild(newHeader);
   newDiv.appendChild(newLink);
   content.appendChild(newDiv);
@@ -50,36 +45,16 @@ function removeDivs() {
   }
 }
 
-function extractJson(data) {
-  return data.json();
-}
-
-// if no content
-function contentCheck() {
-  (userSearch.value === '' ? alert("You need to search for something!"): apiCall());
-}
-
-// apiCall
-function apiCall() {
-  fetch(apiUrl + userSearch.value)
-    .then(extractJson)
-    .then(showResults)
-
-    .catch(function(error) {
-      console.log("Something went wrong " + error);
-    })
-  }
-
 // Toggle hiding/showing buttons
-function hide() {
-  backBtn.className = "show";
-  searchBtn.className = "hide";
-  random.className = "hide";
-  userSearch.className = "hide";
-  footer.className = "footer--not-fixed"
+function hide(element) {
+  if (element == footer) {
+    element.className = "footer--not-fixed";
+  } else if (element == backBtn) {
+    element.className = "show btn btn-info";
+  } else {
+    element.className = "hide";
+  }
 }
-
-// hide(searchBtn);
 
 function show() {
   backBtn.className = "hide";
@@ -93,15 +68,38 @@ function show() {
   userSearch.placeholder = " Search for an article...";
   userSearch.value = "";
 
-  footer
-
 }
+
+// if no content
+function contentCheck() {
+  (userSearch.value === '' ? alert("You need to search for something!"): apiCall());
+}
+
+function extractJson(data) {
+  return data.json();
+}
+
+// apiCall
+function apiCall() {
+  fetch(apiUrl + userSearch.value)
+    .then(extractJson)
+    .then(showResults)
+
+    .catch(function(error) {
+      console.log("Something went wrong " + error);
+    })
+  }
 
 // Display search results
 function showResults(data) {
   const { query: { search } } = data;
 
-  hide();
+  hide(backBtn);
+  hide(searchBtn);
+  hide(random);
+  hide(userSearch);
+  hide(footer);
+
   removeDivs();
 
   for (let i = 0; i < search.length; i++) {
@@ -117,7 +115,5 @@ backBtn.addEventListener("click", show);
 
 /* To Do:
 - Understand query string
-- object destructuring
-- break down addDiv function
 - map instead of if statement
 */
