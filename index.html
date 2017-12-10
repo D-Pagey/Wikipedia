@@ -8,45 +8,36 @@
     <title>Wikipedia Viewer</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
+
   </head>
 
   <body>
-    <div class="container" id="container">
+    <div class="main-container" id="container">
 
-  <!-- Title -->
-  <div class="col text-center">
-      <h1 class="display-4">Wikipedia Viewer</h1>
-  </div>
+      <h1 class="title">Wikipedia Viewer</h1>
 
-  <!-- Search Bar -->
-    <div class="col text-center">
-      <button class="hide" id="back">Back</button>
-        <input type="text" placeholder=" Search for an article..." value="" id="userSearch">
-      <button id="submit">Search</button>
-    </div>
-
-  <!-- Random Button -->
-    <div class="col text-center">
-      <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><button type="button" class="btn btn-primary" id="random">Random Article</button></a>
-    </div>
-
-  <!-- Search Results -->
-  <div id="content-container">
-  </div>
-
-    <!-- Footer -->
-    <div class="col">
-      <div class="footer" id="foot">
-        <p>Written and coded by <a href="https://www.freecodecamp.org/d-pagey" target="_blank">Pagey</a></p>
+      <div class="search-section">
+        <button class="button back-button hide" id="back">Back</button>
+        <input type="text" class="input" placeholder=" Search for an article..." value="" id="userSearch">
+        <button class="button search-button" id="submit">Search</button>
       </div>
-    </div>
 
-</div>
+      <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><button type="button" class="random-button" id="random">Random Article</button></a>
+
+      <!-- Search Results -->
+      <div id="search-results">
+      </div>
+
+      <!-- Footer -->
+      <div class="footer" id="foot">
+        <p>Written and coded by <a href="https://www.freecodecamp.org/d-pagey" target="_blank" class="freecodecamp">Pagey</a></p>
+      </div>
+
+    </div>
 
 <!--
 Story 1: DONE - I can search Wikipedia entries in a search box and see the resulting Wikipedia entries.
-
 Story 2: DONE - I can click a button to see a random Wikipedia entry.
 -->
 

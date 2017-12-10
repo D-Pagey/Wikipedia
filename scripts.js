@@ -1,7 +1,7 @@
 // Constants
 const userSearch = document.getElementById("userSearch");
 const searchBtn = document.getElementById("submit");
-const content = document.getElementById("content-container");
+const content = document.getElementById("search-results");
 const backBtn = document.getElementById("back");
 const random = document.getElementById("random");
 const footer = document.getElementById("foot");
@@ -50,17 +50,17 @@ function hide(element) {
   if (element == footer) {
     element.className = "footer--not-fixed";
   } else if (element == backBtn) {
-    element.className = "show btn btn-info";
+    element.className = "button back-button show";
   } else {
     element.className = "hide";
   }
 }
 
 function show() {
-  backBtn.className = "hide";
-  searchBtn.className = "show";
-  random.className = "btn btn-primary show";
-  userSearch.className = "show";
+  backBtn.className = "button back-button hide";
+  searchBtn.className = "button search-button show";
+  random.className = "random-button show";
+  userSearch.className = "input show";
   footer.className = "footer";
 
   removeDivs();

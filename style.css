@@ -1,40 +1,45 @@
-body {
-  background-color: #f0ead6 !important;
+* {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0ead6;
 }
 
-h1 {
-  margin: 2%;
+a {
+  text-decoration: none;
 }
 
-#random {
-  margin: 10px;
+.main-container {
+  margin: 0 auto;
+  width: 95%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.articles {
+.title {
+  font-size: 2em;
+  font-weight: 300;
+  margin: 1em 0 0.5em 0;
+}
+
+.search-section {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: 1em 0;
+}
+
+.input {
+  display: inline-block;
   background-color: white;
-  border-radius: 15px;
-  border: 2px solid;
-  margin: 10px;
-  padding: 5px;
+  padding: 1px 0;
 }
 
-button {
+.button {
   border-radius: 2px;
   border: 0.5px solid;
-  margin: 2px;
-}
-
-.article-headers {
-  margin: 10px;
-}
-
-.article-snippets {
-  color: black;
-  margin-left: 10px;
-}
-
-.article-snippets, a:hover {
-  text-decoration: none !important;
 }
 
 .hide {
@@ -45,6 +50,31 @@ button {
   display: initial;
 }
 
+.search-button {
+  margin-left: 5px;
+}
+
+.back-button {
+  align-self: flex-start;
+}
+
+.search-button, .back-button {
+  padding: 5px 6px;
+  font-weight: bold;
+  background-color: lightgrey;
+}
+
+.random-button {
+  display: inline-block;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  border: 1px solid transparent;
+  line-height: 1.25;
+  padding: 0.5em 0.75em;
+  border-radius: 0.25em;
+}
+
 .footer {
   text-align: center;
   margin-bottom: 10px;
@@ -53,6 +83,7 @@ button {
   bottom: 0px;
   height: 30px;
   width: 100%;
+  font-size: 0.75em;
 }
 
 .footer--not-fixed {
@@ -63,4 +94,31 @@ button {
   bottom: 0px;
   height: 30px;
   width: 100%;
+  font-size: 0.75em;
+}
+
+.freecodecamp {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.articles {
+  background-color: white;
+  border-radius: 0.5em;
+  border: 2px solid;
+  font-size: 0.75em;
+  width: 97.5%;
+  margin: 0 auto 1em;
+}
+
+.article-headers {
+  margin: 0.5em;
+  background-color: white;
+}
+
+.article-snippets {
+  color: black;
+  background-color: white;
+  margin: 0.5em;
+  width: 97.5%;
 }
