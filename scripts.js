@@ -25,6 +25,7 @@ function addDiv(titleV, snippetV, linkV) {
   const newLink = document.createElement("a");
   newLink.href = linkV;
   newLink.target = "_blank";
+  newLink.className = "article-link";
 
   const newSnippet = document.createElement("p");
   newSnippet.className = "article-snippets";
