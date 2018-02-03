@@ -6,6 +6,6 @@
 
 This is another Intermediate Front End project where I learnt a lot on a variety of topics including: API calls, creating elements in the DOM, creating tiny helper functions etc.
 
-I've restyled this project to use native CSS and Flexbox instead of Bootstrap and the project is now also mobile responsive. There are quite a few styling improvements that I could make in the future, however the project is functional and I'm quite keen to move on to the next project.
+I've restyled this project to use SCSS and Flexbox instead of Bootstrap and the project is now also mobile responsive. I've also added an information Modal to show the user stories that the project was fulfilling. 
 
 You can see this [Wikipedia Viewer](https://codepen.io/Pagey/pen/wrZRqR) project on CodePen.

@@ -1,5 +1,6 @@
 /* Variables */
 $article-color: darkgray;
+$tablet: "(min-width: 750px)";
 
 /* Mixins */
 @mixin mediaQueries($arg) {
@@ -14,6 +15,9 @@ $article-color: darkgray;
   font-size: 14px;
   margin: 0;
   padding: 0;
+  @include mediaQueries($tablet) {
+    font-size: 16px;
+  }
 }
 
 .main-container {
@@ -202,7 +206,7 @@ $article-color: darkgray;
   background-color: white;
   border: 2px solid;
   border-radius: .5em;
-  font-size: .75em;
+  font-size: .8em;
   margin: 0 auto 1em;
   width: 97.5%;
 }
@@ -215,6 +219,7 @@ $article-color: darkgray;
 
 .article-headers {
   background-color: white;
+  font-size: 1.5em;
   margin: .5em;
 }
 
