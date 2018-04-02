@@ -1,0 +1,11 @@
+.header {
+    margin: 30px auto;
+    text-align: center;
+    width: 20rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 300;
+    margin: 10px 0;
+}

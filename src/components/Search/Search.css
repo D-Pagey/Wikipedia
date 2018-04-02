@@ -1,0 +1,41 @@
+.search-container {
+    align-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    height: 5.5rem;
+    justify-content: center;
+    margin: 0 auto;
+    width: 85%;
+}
+
+.input {
+    border-radius: 2px;
+    border: 1px solid grey;
+    font-size: 1rem;
+    padding: 5px;
+    width: 11rem;
+}
+
+.search-button {
+    background-color: lightgrey;
+    border: .5px solid black;
+    border-radius: 2px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin-left: 5px;
+    padding: 6px;
+    width: 4rem;
+}
+
+.random-button {
+    align-self: center;
+    background-color: #007bff;
+    border: 1px solid transparent;
+    border-color: #007bff;
+    border-radius: .25rem;
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.25;
+    padding: .5rem .75rem;
+    order: 1;
+}
