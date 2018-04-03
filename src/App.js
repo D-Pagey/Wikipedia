@@ -13,7 +13,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      userQuery: ''
+      userQuery: '',
+      batch: {}
     }
 
     this.getUserQuery = this.getUserQuery.bind(this);
@@ -29,7 +30,9 @@ class App extends Component {
   fetchQuery() {
     fetch(url + this.state.userQuery)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => this.setState({
+        batch: data.query.search
+      }))
 
       .catch(function(error) {
         console.log('Something went wrong');
@@ -41,7 +44,7 @@ class App extends Component {
       <div className='App'>
         <Header />
         <Search userQuery={this.getUserQuery} search={this.fetchQuery} />
-        <Articles />
+        <Articles searchResults={this.state.batch} />
         <Footer />
       </div>
     );
