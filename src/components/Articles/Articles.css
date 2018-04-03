@@ -4,6 +4,7 @@
     border-radius: 5px;
     font-size: .8rem;
     margin: 1rem auto;
+    max-width: 400px;
     width: 92.5%;
   }
 
@@ -23,7 +24,7 @@
   }
 
   .articles:hover,
-  .articles:hover .article-headers,
-  .articles:hover .article-snippets {
+  .articles:hover .article-header,
+  .articles:hover .article-snippet {
     background-color: darkgray;
   }

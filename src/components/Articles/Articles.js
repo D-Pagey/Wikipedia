@@ -3,6 +3,9 @@ import React from 'react';
 import './Articles.css';
 
 function Articles(props) {
+
+    const { searchResults } = props;
+
     return (
         <main className='articles-container'>
             <div className='articles'>
