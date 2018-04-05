@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './App.css';
+import Modal from './components/Modal';
 import Header from './components/Header';
 import Search from './components/Search';
 import Articles from './components/Articles';
@@ -42,6 +43,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
+        <Modal />
         <Header />
         <Search userQuery={this.getUserQuery} search={this.fetchQuery} />
         <Articles searchResults={this.state.batch} />
