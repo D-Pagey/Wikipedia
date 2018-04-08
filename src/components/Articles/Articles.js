@@ -1,38 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './Articles.css';
 
-function Articles(props) {
+class Articles extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-    const { searchResults } = props;
+    render() {
+        let articleData;
+        
+        if (this.props.searchResults.length) {
+            articleData = this.props.searchResults.map((obj) => (
+            <div className='articles' key={obj.pageid}>
+                <h3 className='article-header'>{obj.title}</h3>
+                <a 
+                href={`https://en.wikipedia.org/?curid=${obj.pageid}`} 
+                className='article-link'
+                target='_blank'>
+                <p className='article-snippet'>{obj.snippet}</p></a>
+            </div>
+        ));
+        } else {
+          articleData = null;
+        }
 
-    if (searchResults.length > 0) {
-        return (
-            <main className='articles-container'>
-                <div className='articles'>
-                    <h3 className='article-header'>{searchResults[0].title}</h3>
-                    <a href='#' className='article-link'>
-                    <p className='article-snippet'>{searchResults[0].snippet}</p></a>
-                </div>
-            </main>
-        )
-      } else {
-
-        return (
-            <main className='articles-container'>
-                <div className='articles'>
-                    <h3 className='article-header'>Test</h3>
-                    <a href='#' className='article-link'>
-                    <p className='article-snippet'>Test(s) or TEST may refer to: 
-                    Test (assessment), an assessment intended to measure the 
-                    respondents' knowledge or other abilities List of tests</p></a>
-                </div>
-            </main>
-        )
-
+        return <main>{articleData}</main>;
       }
-
-    
 }
 
 export default Articles;
+
