@@ -32,20 +32,20 @@ class Modal extends Component {
          <button type="button" name="button" className="modal-cancel">
            <i className="material-icons sm-12" onClick={this.handleClick}>
              clear</i></button>
-         <h4 className="modal-title">Local Weather App</h4>
+             
+         <h4 className="modal-title">Wikipedia Viewer</h4>
          <p className="modal-text">This is an Intermediate Front End Developer
            project from the FreeCodeCamp curriculum. The user stories to be
            completed are:</p>
          <ul className="user-stories">
-           <li className="story">I can see the weather in my current location.</li>
-           <li className="story">I can see a different icon or background image
-             (e.g. snowy mountain, hot desert) depending on the weather.</li>
-           <li className="story">I can push a button to toggle between
-             Fahrenheit and Celsius.</li>
+           <li className="story">I can search Wikipedia entries in a search box 
+           and see the resulting Wikipedia entries.</li>
+           <li className="story">I can click a button to see a random Wikipedia 
+           entry.</li>
          </ul>
          <p className="modal-text copy">This project was coded in React using
            Create-React-App.
-           The code can be seen on <a href="https://github.com/D-Pagey/weather"
+           The code can be seen on <a href="https://github.com/D-Pagey/wikipedia"
            target="_blank" rel="noopener noreferrer" className="link">
            Github</a>.</p>
        </dialog>

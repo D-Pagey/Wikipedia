@@ -44,7 +44,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className='app'>
         <Modal />
         <Header />
         <Search userQuery={this.getUserQuery} search={this.fetchQuery} />

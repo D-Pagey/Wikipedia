@@ -1,5 +1,5 @@
 .modal-container {
-  display: flex;
+  align-self: flex-end;
   font-size: 0.95rem;
 }
 
@@ -7,7 +7,7 @@
   background-color: transparent;
   border: none;
   margin: .5rem .5rem 0 0;
-}
+  float: right; }
 
 .material-icons.md-14 {
   opacity: .5; }
@@ -18,7 +18,7 @@
   margin: 0 auto;
   max-width: 300px;
   padding: .5em;
-  top: 15%;
+  top: 10%;
   width: 80%; }
 
 .modal-cancel {
