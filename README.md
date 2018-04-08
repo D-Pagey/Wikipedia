@@ -14,7 +14,6 @@ project is now also mobile responsive. I've also added an information Modal to
 show the user stories that the project was fulfilling. 
 
 **Improvements:**
-- Add Modal
 - Fix the ::backdrop CSS element on the Dialog element. It works in the vanilla
 JS version but not in the React version.
 
