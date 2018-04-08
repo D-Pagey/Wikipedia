@@ -15,7 +15,8 @@ class App extends Component {
 
     this.state = {
       userQuery: '',
-      batch: {}
+      batch: {},
+      footer: 'footer'
     }
 
     this.getUserQuery = this.getUserQuery.bind(this);
@@ -32,7 +33,8 @@ class App extends Component {
     fetch(url + this.state.userQuery)
       .then(response => response.json())
       .then(data => this.setState({
-        batch: data.query.search
+        batch: data.query.search,
+        footer: 'footer not-fixed'
       }))
 
       .catch(function(error) {
@@ -47,7 +49,7 @@ class App extends Component {
         <Header />
         <Search userQuery={this.getUserQuery} search={this.fetchQuery} />
         <Articles searchResults={this.state.batch} />
-        <Footer />
+        <Footer footerClass={this.state.footer} />
       </div>
     );
   }

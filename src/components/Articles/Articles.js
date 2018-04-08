@@ -1,24 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './Articles.css';
 
-class Articles extends Component {
-    constructor(props) {
-        super(props);
-    }
+function Articles(props) {
+  let articleData;
 
-    render() {
-        let articleData;
-        
-        if (this.props.searchResults.length) {
-            articleData = this.props.searchResults.map((obj) => (
+    if (props.searchResults.length) {
+        articleData = props.searchResults.map((obj) => (
             <div className='articles' key={obj.pageid}>
-                <h3 className='article-header'>{obj.title}</h3>
-                <a 
-                href={`https://en.wikipedia.org/?curid=${obj.pageid}`} 
-                className='article-link'
-                target='_blank'>
-                <p className='article-snippet'>{obj.snippet}</p></a>
+              <h3 className='article-header'>{obj.title}</h3>
+              <a 
+              href={`https://en.wikipedia.org/?curid=${obj.pageid}`} 
+              className='article-link'
+              target='_blank'
+              rel='noopener noreferrer'>
+              <p className='article-snippet'>
+              {obj.snippet.replace(/<\/?[^>]+>/gi, '')}
+              </p></a>
             </div>
         ));
         } else {
@@ -27,7 +25,6 @@ class Articles extends Component {
 
         return <main>{articleData}</main>;
       }
-}
 
 export default Articles;
 

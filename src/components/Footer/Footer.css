@@ -7,9 +7,12 @@
     text-align: center;
     width: 100%;
   }
+
+.not-fixed {
+  position: initial;
+}
   
-  .freecodecamp {
-    color: blue;
-    text-decoration: none;
-  }
-  
+.freecodecamp {
+  color: #007bff;
+  text-decoration: none;
+}
