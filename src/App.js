@@ -15,7 +15,7 @@ class App extends Component {
 
     this.state = {
       userQuery: '',
-      batch: {},
+      batch: [],
       footer: 'footer'
     }
 
@@ -34,7 +34,7 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({
         batch: data.query.search,
-        footer: 'footer not-fixed'
+        footerClass: 'footer not-fixed'
       }))
 
       .catch(function(error) {
@@ -48,8 +48,8 @@ class App extends Component {
         <Modal />
         <Header />
         <Search userQuery={this.getUserQuery} search={this.fetchQuery} />
-        <Articles searchResults={this.state.batch} />
-        <Footer footerClass={this.state.footer} />
+        <Articles articles={this.state.batch} />
+        <Footer footerClass={this.state.footerClass} />
       </div>
     );
   }

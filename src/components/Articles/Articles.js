@@ -2,29 +2,33 @@ import React from 'react';
 
 import './Articles.css';
 
-function Articles(props) {
-  let articleData;
+function Article({article}) {
+  return (
+    <li className='articles' key={article.pageid}>
+      <h3 className='article-header'>{article.title}</h3>
+      <a
+      href={`https://en.wikipedia.org/?curid=${article.pageid}`}
+      className='article-link'
+      target='_blank'
+      rel='noopener noreferrer'>
+      <p className='article-snippet'>
+      {article.snippet.replace(/<\/?[^>]+>/gi, '')}
+      </p></a>
+  </li>);
+}
 
-    if (props.searchResults.length) {
-        articleData = props.searchResults.map((obj) => (
-            <div className='articles' key={obj.pageid}>
-              <h3 className='article-header'>{obj.title}</h3>
-              <a 
-              href={`https://en.wikipedia.org/?curid=${obj.pageid}`} 
-              className='article-link'
-              target='_blank'
-              rel='noopener noreferrer'>
-              <p className='article-snippet'>
-              {obj.snippet.replace(/<\/?[^>]+>/gi, '')}
-              </p></a>
-            </div>
-        ));
-        } else {
-          articleData = null;
-        }
+function ArticleList({articles}) {
+  const articleItems = articles.map((article) => <Article article={article} />);
 
-        return <main>{articleData}</main>;
-      }
+  return (
+    <ul className='article-container'>
+      {articleItems}
+    </ul>
+  );
+}
 
-export default Articles;
+ArticleList.defaultProps = {
+  articles: []
+}
 
+export default ArticleList;
