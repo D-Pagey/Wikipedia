@@ -2,10 +2,7 @@ import React from 'react';
 
 import './Search.css';
 
-function Search(props) {
-
-    const { userQuery, search } = props;
-
+function Search({userQuery, search}) {
     return (
         <div className='search-container'>
             <input type='text' className='input' onChange={userQuery}

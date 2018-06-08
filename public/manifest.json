@@ -1,5 +1,5 @@
 {
-  "short_name": "Wikipedia Viewer",
+  "short_name": "Wikipedia",
   "name": "Wikipedia Viewer",
   "start_url": "./index.html",
   "display": "standalone",
