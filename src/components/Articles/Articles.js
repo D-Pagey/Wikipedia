@@ -18,7 +18,8 @@ function Article({article}) {
 }
 
 function ArticleList({articles}) {
-  const articleItems = articles.map((article) => <Article article={article} />);
+  const articleItems = articles.map((article) => 
+    <Article article={article} key={article.pageid} />);
 
   return (
     <ul className='article-container'>
